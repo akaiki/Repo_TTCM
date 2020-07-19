@@ -6,24 +6,9 @@ import cv2
 import numpy as np 
 import os
 
+#thêm thư viện tesseract
 ptr.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
-img_path = 'TheSV.png'
-
-# img = cv2.imread(img_path, cv2.COLOR_BGR2GRAY)
-# hImg, wImg, _ = img.shape
-# conf = r'--oem 3 --psm 6 outputbase digits'
-# boxes = ptr.image_to_data(img)
-# for a,b in enumerate(boxes.splitlines()):
-#         # print(b)
-#         if a!=0:
-#             b = b.split()
-#             if len(b)==12:
-#                 x,y,w,h = int(b[6]),int(b[7]),int(b[8]),int(b[9])
-#                 cv2.putText(img,b[11],(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(50,50,255),2)
-#                 cv2.rectangle(img, (x,y), (x+w, y+h), (50, 50, 255), 2)
-
-# cv2.imshow('boxed', img)
-# cv2.waitKey(0)
+img_path = 'testSoXe_croped.png'
 
 #xám hóa ảnh đàu vào
 img = cv2.imread(img_path, cv2.COLOR_BGR2GRAY)
@@ -112,6 +97,7 @@ filters = [
     ('Sobel Bottom', sobelBottom) #13
 ]
 
+#-------------show all filters----------
 fig = plt.figure(figsize=(12, 8))
 fig.subplots_adjust(hspace=0.3, wspace=0.1)
 
@@ -128,6 +114,8 @@ for i, filter in enumerate(filters):
     print("\n---------------------------------")
 plt.show()
 
+
+##-----------show từng filter-------------
 # def show(i, filter, name):
 #     img_out = cv2.filter2D(img, 0, filter[1])
 #     name = filter[0]
@@ -138,19 +126,21 @@ plt.show()
 #     cv2.imshow(name, img_out)
 #     cv2.waitKey(0)
 
-
-# name = sharpen[0]
-# show(8,sharpen, name)
-
 # for i, filter in enumerate(filters):
 #     name = filter[0]
 #     show(i,filter, name)
+##-----------show từng filter-------------
 
+##----------Qua các fiter----------
 # img_out = cv2.filter2D(img, 0,emboss[1])
 # img_out = cv2.filter2D(img_out, 0,gaussian[1])   
 # img_out = cv2.filter2D(img_out, 0,sharpen[1])
 # img_out = cv2.filter2D(img_out, 0,boxblur[1])
 # img_out = cv2.filter2D(img_out, 0,edge[1])
+
+# print("----Image to text, testing ----\n")
 # print(ptr.image_to_string(img_out))
+# print("\n-------------------------------\n")
 # cv2.imshow("name", img_out)
 # cv2.waitKey(0)
+##----------Qua các fiter----------
